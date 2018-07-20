@@ -1,0 +1,36 @@
+
+.tab-selector {
+    
+    .tabs {
+        display: flex;
+        cursor: pointer;
+        border: 1px solid #c4c4c4;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+
+        .tab {
+            width: 140px;
+            height: 40px;
+            border-right: 1px solid #c4c4c4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab.selected {
+            background: #87aedd;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tab:hover:not(.selected) {
+            background: #F2F2F2;
+        }
+
+        .tab:last-child {
+            border-right: 0;
+        }
+
+    }
+
+}

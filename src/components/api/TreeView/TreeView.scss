@@ -1,0 +1,32 @@
+
+.tree-view {
+    
+    border: 1px solid #c4c4c4;
+    height: 300px;
+    width: 200px;
+    user-select: none;
+    overflow-y: auto;
+
+    .item {
+        padding: 2px 6px;
+        cursor: pointer;
+        display: none;
+    
+        .name {
+            padding: 1px 2px;
+        }
+
+        .name.selected {
+            background: #F2F2F2;
+        }
+
+        .arrow {
+            width: 13px;
+        }
+    }
+
+    .item.visible {
+        display: block;
+    }
+
+}

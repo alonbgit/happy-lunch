@@ -3,9 +3,13 @@ import * as httpMethods from './httpMethods';
 const signin = (data) => {
 
     if (data.email === 'alon' && data.password === '123')
-        return true;
+        return {
+            success: true
+        };
 
-    return false;
+    return {
+        success: false
+    }
 
 }
 

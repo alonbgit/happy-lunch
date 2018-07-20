@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './Signin.scss';
 import axios from '../../axios/getAxiosInstance';
+import InvalidCredentialsPopup from './InvalidCredentialsPopup/InvalidCredentialsPopup';
 
 class Signin extends Component {
 
     state = {
         email: '',
-        password: ''
+        password: '',
+        loginFailed: false
     }
 
     render() {
@@ -25,6 +27,14 @@ class Signin extends Component {
                     
                     <button className="signin-button" onClick={this.signin}>Lets Go</button>
                 </form>
+
+                {
+                    this.state.loginFailed &&
+                    <InvalidCredentialsPopup close={this.closeLoginFailedPopup}>
+
+                    </InvalidCredentialsPopup>
+                }
+
             </div>
         )
     }
@@ -38,11 +48,27 @@ class Signin extends Component {
         }
 
         axios.post('/signin', request).then((response) => {
-            console.log(response);
+
+            if (!response.data.success) {
+                this.setState({
+                    loginFailed: true
+                });
+            }
+
         }).catch((ex) => {
-            console.log(ex);
+
+            this.setState({
+                loginFailed: true
+            });
+
         });
 
+    }
+
+    closeLoginFailedPopup = () => {
+        this.setState({
+            loginFailed: false
+        });
     }
 
 }

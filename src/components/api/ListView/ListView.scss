@@ -1,0 +1,30 @@
+
+.list-view {
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+    user-select: none;
+
+    .item {
+        padding: 6px 9px;
+        border-top: 1px solid #c4c4c4;
+    }
+
+    .item.selected {
+        background: #87aedd;
+        color: white;
+        font-weight: bold;
+    }
+
+    .item:first-child {
+        border-top: 0;
+    }
+
+    .item:hover:not(.selected) {
+        background: #F2F2F2;
+    }
+
+}
