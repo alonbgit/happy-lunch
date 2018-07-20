@@ -1,0 +1,17 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root, .App, .App > div {
+    height: 100%;
+}
+
+body {
+    font-family: palanquindark-regular;
+}
+
+@font-face {
+    font-family: palanquindark-regular;
+    src: url(assets/fonts/palanquindark-regular.ttf);
+}

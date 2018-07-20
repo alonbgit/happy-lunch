@@ -1,0 +1,36 @@
+
+.signin {
+
+    form {
+           
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+
+        input[type="text"], input[type="password"] {
+            
+            height: 60px;
+            font-size: 23px;
+            padding-left: 12px;
+            outline: 0;
+            border-radius: 3px;
+            border: 1px solid #cecece;
+            margin-top: 6px;
+
+        }
+        
+        .signin-button {
+            height: 50px;
+            margin-top: 6px;
+            background: #64ff4c;
+            outline: 0;
+            border-radius: 3px;
+            border: 1px solid #cecece;
+            font-size: 20px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+    }
+
+}
