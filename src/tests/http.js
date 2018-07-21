@@ -1,6 +1,6 @@
 import server from './server';
 
-const TIMEOUT_INTERVAL = 500;
+const TIMEOUT_INTERVAL = 2000;
 
 const post = (url, data) => {
 

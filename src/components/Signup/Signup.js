@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './Signup.scss';
-import axios from '../../axios/getAxiosInstance';
 import '../api/Buttons/buttons.scss';
 import * as EmailValidator from 'email-validator';
 import classnames from 'classnames';
 import WelcomePopup from './WelcomePopup/WelcomePopup';
+import * as userActions from '../../store/actions/user';
+import { connect } from 'react-redux';
 
 class Signup extends Component {
 
@@ -79,7 +80,7 @@ class Signup extends Component {
                         {this.state.errors.lastNameRequired && <span className="error">Last Name is required</span>}
                     </div>
 
-                    <button className="btn btn-success signup-button" onClick={this.signup}>Join Now</button>
+                    <button className="btn btn-success signup-button" onClick={this.onSignupClick}>Join Now</button>
 
                 </form>
 
@@ -123,7 +124,7 @@ class Signup extends Component {
 
     }
 
-    signup = (e) => {
+    onSignupClick = (e) => {
 
         e.preventDefault();
 
@@ -137,14 +138,12 @@ class Signup extends Component {
             lastName: this.state.lastName
         }
 
-        axios.post('/signup', request).then((response) => {
-            if (response.data.success) {
+        this.props.signup(request).then((data) => {
+            if (data.success) {
                 this.setState({
                     showWelcomePopup: true
                 });
             }
-        }).catch((ex) => {
-            console.log(ex);
         });
 
     }
@@ -157,4 +156,14 @@ class Signup extends Component {
 
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signup: (user) => dispatch(userActions.signup(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
