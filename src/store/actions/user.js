@@ -22,6 +22,27 @@ export const signup = (payload) => (dispatch) => {
 
     });
 
+}
 
+export const signin = (payload) => (dispatch) => {
+
+    return new Promise((resolve, reject) => {
+
+        axios.post('/signin', payload).then((response) => {
+
+            dispatch({
+                type: actionTypes.SIGN_IN,
+                payload: response.data
+            });
+
+            resolve(response.data);
+
+        }).catch((ex) => {
+
+            reject(ex);
+
+        });
+
+    });
 
 }

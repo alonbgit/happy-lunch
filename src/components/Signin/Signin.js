@@ -3,6 +3,8 @@ import './Signin.scss';
 import '../api/Buttons/buttons.scss';
 import axios from '../../axios/getAxiosInstance';
 import InvalidCredentialsPopup from './InvalidCredentialsPopup/InvalidCredentialsPopup';
+import * as userActions from '../../store/actions/user';
+import { connect } from 'react-redux';
 
 class Signin extends Component {
 
@@ -43,14 +45,12 @@ class Signin extends Component {
             password: this.state.password
         }
 
-        axios.post('/signin', request).then((response) => {
+        this.props.signin(request).then((data) => {
 
-            if (!response.data.success) {
-                this.setState({
-                    loginFailed: true
-                });
-            }
-
+            this.setState({
+                loginFailed: data.success
+            });
+            
         }).catch((ex) => {
 
             this.setState({
@@ -69,4 +69,10 @@ class Signin extends Component {
 
 }
 
-export default Signin;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signin: (user) => dispatch(userActions.signin(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Signin);
