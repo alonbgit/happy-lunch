@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Header extends Component {
 
@@ -10,10 +11,17 @@ class Header extends Component {
                 <span className="header-text">
                     <NavLink to="/">MeatGroup</NavLink>
                 </span>
+                {this.props.isLoggedIn && <span>Logged</span>}
             </div>
         )
     }
 
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.user.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(Header);

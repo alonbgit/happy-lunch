@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Signin.scss';
 import '../api/Buttons/buttons.scss';
-import axios from '../../axios/getAxiosInstance';
 import InvalidCredentialsPopup from './InvalidCredentialsPopup/InvalidCredentialsPopup';
 import * as userActions from '../../store/actions/user';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 class Signin extends Component {
 
@@ -29,6 +29,9 @@ class Signin extends Component {
                            onChange={(e) => this.setState({password: e.target.value})}/>
                     
                     <button className="btn btn-success signin-button" onClick={this.signin}>Lets Go</button>
+
+                    <span className="new-user">New User? <NavLink to="/signup">Signup</NavLink></span>
+
                 </form>
 
                 {this.state.loginFailed && <InvalidCredentialsPopup close={this.closeLoginFailedPopup}/>}
@@ -47,15 +50,13 @@ class Signin extends Component {
 
         this.props.signin(request).then((data) => {
 
-            this.setState({
-                loginFailed: data.success
-            });
+            if (data.success) {
+                this.setState({
+                    loginFailed: true
+                });
+            }
             
         }).catch((ex) => {
-
-            this.setState({
-                loginFailed: true
-            });
 
         });
 

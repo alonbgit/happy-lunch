@@ -5,17 +5,17 @@ const initialState = {
 }
 
 const signup = (state, {payload}) => {
-    if (payload.success) {
-        state.isLoggedIn = true;
+    return {
+        ...state,
+        isLoggedIn: payload.success
     }
-    return state;
 }
 
 const signin = (state, {payload}) => {
-    if (payload.success) {
-        state.isLoggedIn = true;
+    return {
+        ...state,
+        isLoggedIn: payload.success
     }
-    return state;
 }
 
 const reducer = (state = initialState, action) => {

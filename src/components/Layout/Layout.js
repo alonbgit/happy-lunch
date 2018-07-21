@@ -1,20 +1,43 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, withRouter, Switch } from 'react-router-dom';
 import './Layout.scss';
 import Header from './Header/Header';
 import Body from './Body/Body';
 import Home from '../Home/Home';
 import Signup from '../Signup/Signup';
+import GroupsPage from '../GroupsPage/GroupsPage';
+
+import { connect } from 'react-redux';
+  
+const Aux = props => props.children;
 
 class Layout extends Component {
+
+    renderRoutes() {
+
+        if (this.props.isLoggedIn) {
+            return <Aux>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/groups" component={GroupsPage}/>
+                  </Aux>
+        }
+        
+        return (
+            <Aux>
+                <Route exact path="/" component={Home}/>
+                <Route path="/signup" component={Signup}/>
+            </Aux>
+        )
+    }
 
     render() {
         return (
             <div className="layout">
                 <Header/>
                 <Body>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/signup" component={Signup}/>
+                    <Switch>
+                        {this.renderRoutes()}
+                    </Switch>
                 </Body>
             </div>
         );
@@ -22,4 +45,10 @@ class Layout extends Component {
 
 }
 
-export default Layout;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.user.isLoggedIn
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Layout));

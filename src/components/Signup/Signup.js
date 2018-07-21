@@ -29,6 +29,7 @@ class Signup extends Component {
     }
 
     render() {
+      
         return (
             <div className="signup">
                 <p className="signup-title">Signup now, and bon appetit!</p>

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './Home.scss';
 import Signin from '../Signin/Signin';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class Home extends Component {
-
+    
     render() {
         return (
             <div className="home">
@@ -15,4 +17,10 @@ class Home extends Component {
 
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.user.isLoggedIn
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Home));
