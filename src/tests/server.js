@@ -13,11 +13,24 @@ const signin = (data) => {
 
 }
 
+const signup = (data) => {
+
+    return {
+        success: true
+    };
+
+}
+
 const urls = [
     {
         httpMethod: httpMethods.GET,
         method: signin,
         url: '/signin'
+    },
+    {
+        httpMethod: httpMethods.GET,
+        method: signup,
+        url: '/signup'
     }
 ]
 

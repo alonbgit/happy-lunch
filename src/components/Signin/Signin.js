@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Signin.scss';
+import '../api/Buttons/buttons.scss';
 import axios from '../../axios/getAxiosInstance';
 import InvalidCredentialsPopup from './InvalidCredentialsPopup/InvalidCredentialsPopup';
 
@@ -25,15 +26,10 @@ class Signin extends Component {
                            value={this.state.password}
                            onChange={(e) => this.setState({password: e.target.value})}/>
                     
-                    <button className="signin-button" onClick={this.signin}>Lets Go</button>
+                    <button className="btn btn-success signin-button" onClick={this.signin}>Lets Go</button>
                 </form>
 
-                {
-                    this.state.loginFailed &&
-                    <InvalidCredentialsPopup close={this.closeLoginFailedPopup}>
-
-                    </InvalidCredentialsPopup>
-                }
+                {this.state.loginFailed && <InvalidCredentialsPopup close={this.closeLoginFailedPopup}/>}
 
             </div>
         )

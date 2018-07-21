@@ -1,0 +1,13 @@
+
+.doc-buttons {
+
+    .buttons-list {
+        display: inline-flex;
+        flex-direction: column;
+
+        button {
+            margin-top: 3px;
+        }
+    }
+
+}

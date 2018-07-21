@@ -10,4 +10,12 @@
     .header-text {
         font-size: 25px;
     }
+
+    a {
+        text-decoration: none;
+    }
+    
+    a:visited {
+        color: white;
+    }
 }
