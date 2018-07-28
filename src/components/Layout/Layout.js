@@ -14,20 +14,15 @@ const Aux = props => props.children;
 class Layout extends Component {
 
     renderRoutes() {
-
-        if (this.props.isLoggedIn) {
-            return <Aux>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/groups" component={GroupsPage}/>
-                  </Aux>
-        }
         
         return (
             <Aux>
                 <Route exact path="/" component={Home}/>
                 <Route path="/signup" component={Signup}/>
+                <Route path="/groups" component={GroupsPage}/>
             </Aux>
         )
+        
     }
 
     render() {

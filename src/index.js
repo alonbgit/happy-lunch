@@ -9,10 +9,12 @@ import thunk from 'redux-thunk';
 
 import user from './store/reducers/user';
 import loader from './store/reducers/loader';
+import group from './store/reducers/group';
 
 const rootReducer = combineReducers({
     user,
-    loader
+    loader,
+    group
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

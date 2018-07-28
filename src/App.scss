@@ -3,12 +3,18 @@
     box-sizing: border-box;
 }
 
-html, body, #root, .App, .App > div {
+html {
     height: 100%;
 }
 
 body {
     font-family: palanquindark-regular;
+    height: 100%;
+    background: #E9EBEE;
+}
+
+.App, #root {
+    height: 100%;
 }
 
 @font-face {

@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import './GroupsPage.scss';
+import GroupList from './GroupList/GroupList';
+import { connect } from 'react-redux';
 
 class GroupsPage extends Component {
 
     render() {
         return (
             <div className="groups-page">
-                Groups Page
+                <GroupList groups={this.props.groups}/>
             </div>
         );
     }
 
 }
 
-export default GroupsPage;
+const mapStateToProps = (state) => {
+    return {
+        groups: state.group.groups
+    }
+}
+
+export default connect(mapStateToProps)(GroupsPage);
